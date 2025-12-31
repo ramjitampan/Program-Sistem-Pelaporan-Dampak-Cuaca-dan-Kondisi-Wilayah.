@@ -6,25 +6,7 @@
 
 **Sistem Pelaporan Berbasis Web untuk Monitoring Dampak Cuaca dan Kondisi Wilayah**
 
-[![Status](https://img.shields.io/badge/status-in%20development-yellow)]()
-[![License](https://img.shields.io/badge/license-MIT-blue)]()
-
 </div>
-
----
-
-## 📋 Daftar Isi
-
-- [Tentang Proyek](#-tentang-proyek)
-- [Tujuan Sistem](#-tujuan-sistem)
-- [Fitur Utama](#-fitur-utama)
-  - [Fitur User](#fitur-user)
-  - [Fitur Admin](#fitur-admin)
-- [Preview Aplikasi](#-preview-aplikasi)
-- [Tim Pengembang](#-tim-pengembang)
-- [Lisensi](#-lisensi)
-
----
 
 ## 🎯 Tentang Proyek
 
@@ -87,9 +69,6 @@ Halaman ini berfungsi sebagai pengantar sistem dengan menampilkan:
 <div align="center">
 
 ![Landing 1](screenshot/dashbord%20(1).png)
-![Landing 2](screenshot/dashbord%20(2).png)
-![Landing 3](screenshot/dashbord%20(3).png)
-
 *Halaman beranda SIPACU — halaman portal sebelum masuk dashboard*
 
 </div>
@@ -162,31 +141,163 @@ Bagian ini menjelaskan alur penggunaan sistem secara bertahap.
 
 ---
 
+## ⚙️ Fitur Admin SIPACU
 
-### Fitur Admin
+Modul Admin digunakan untuk mengelola laporan bencana, memantau aktivitas sistem,
+melakukan verifikasi data, serta berkomunikasi langsung dengan pengguna.
+
+Seluruh fitur pada panel admin dirancang agar membantu proses pengambilan keputusan
+berbasis data lapangan secara lebih cepat dan terstruktur.
+
+---
+
+### 🔐 Login Administrator
+
+Halaman login berfungsi sebagai gerbang autentikasi akun admin sebelum dapat
+mengakses sistem manajemen laporan.
+
+**Fitur halaman login:**
+- Validasi input email & password
+- Autentikasi berbasis token (JWT)
+- Pembatasan akses berdasarkan role akun
+- Redirect otomatis setelah login sukses
+
+<div align="center">
+
+![Login Admin](screenshot/login_Admin.png)
+
+*Halaman autentikasi Admin*
+
+</div>
+
+---
+
+### 🎛️ Dashboard Administrator
+
+Dashboard utama menampilkan ringkasan data laporan dan kondisi sistem
+dalam bentuk kartu informasi dan tabel laporan terbaru.
+
+**Informasi yang ditampilkan:**
+- Total laporan diterima
+- Jumlah laporan menunggu verifikasi
+- Jumlah laporan terverifikasi
+- Status peringatan kondisi wilayah (siaga darurat)
+- Daftar laporan terbaru dari pengguna
+
+**Tujuan dashboard:**
+- Memberikan gambaran kondisi sistem secara cepat
+- Membantu admin menentukan prioritas penanganan
+
+<div align="center">
+
+![Dashboard Admin](screenshot/halamanUtama_admin.png)
+
+*Ringkasan status laporan & kondisi sistem*
+
+</div>
+
+---
+
+### 📝 Monitoring & Verifikasi Laporan
+
+Modul ini digunakan admin untuk memantau dan memverifikasi laporan yang masuk.
+
+**Alur verifikasi laporan:**
+1. Laporan diterima dari pengguna
+2. Admin membaca detail laporan
+3. Status laporan diperbarui menjadi:
+   - Pending  
+   - Sedang Diproses  
+   - Diverifikasi
+4. Laporan disimpan sebagai arsip sistem
+
+**Kegunaan fitur:**
+- Memastikan laporan valid sebelum diproses
+- Membantu pengelompokan laporan berdasarkan prioritas
+
+<div align="center">
+
+![Verifikasi Laporan](screenshot/DetailLaporan.png)
+
+*Tabel laporan terbaru dengan status verifikasi*
+
+</div>
+
+---
+
+### 💬 Chat Realtime Admin ↔ User
+
+Fitur chat digunakan sebagai sarana komunikasi langsung antara admin
+dan pengguna untuk klarifikasi laporan atau tindak lanjut.
+
+**Kemampuan modul chat:**
+- Pengiriman pesan real-time dua arah
+- Identitas pengirim ditampilkan (Admin / User)
+- Riwayat pesan tampil dalam sesi percakapan
+- Digunakan sebagai media konfirmasi laporan
+
+**Peran fitur:**
+- Mempercepat proses respon laporan
+- Mengurangi potensi miskomunikasi
+
+<div align="center">
+
+![Chat Admin User](screenshot/SimulasiPesan_AdminToUser_danSebaliknya.png)
+
+*Komunikasi dua arah antara Admin dan User*
+
+</div>
+
+---
+
+### 🗺️ Peta Kejadian (Admin Map Panel)
+
+Admin dapat menambahkan dan mengelola marker kejadian pada peta wilayah Sumatra.
+
+**Fitur pada peta kejadian:**
+- Input lokasi kejadian berdasarkan nama wilayah
+- Pemilihan jenis bencana
+- Penyimpanan marker ke database
+- Tampilan statistik jumlah kasus per kategori
+
+**Manfaat:**
+- Mendukung analisis spasial lokasi terdampak
+- Membantu pemetaan wilayah risiko
+
+<div align="center">
+
+![Peta Admin](screenshot/SimulasiMap.png)
+
+*Panel manajemen marker kejadian pada peta*
+
+</div>
+
+---
+## ✨ Fitur User
 
 <table>
+
 <tr>
 <td width="50%">
 
-#### 🔐 Login Administrator
-Sistem autentikasi khusus untuk admin dengan keamanan berlapis dan session management.
+#### 🏠 Dashboard Utama Pengguna
+Menampilkan ringkasan kondisi kesiapsiagaan wilayah, dampak bencana yang sedang terjadi, serta informasi peringatan dini.
 
-**Keamanan:**
-- Encrypted password
-- Two-factor authentication
-- Session timeout
-- Login attempt limit
-- Activity logging
+**Konten dashboard:**
+- Status dampak wilayah
+- Informasi kesiapsiagaan
+- Peringatan BMKG aktif
+- Kondisi cuaca real-time
+- Nomor darurat & tips cepat
 
 </td>
 <td width="50%">
 
 <div align="center">
 
-![Login Admin](screenshots/login_Admin.png)
+![Dashboard User](screenshot/HalamanUser.png)
 
-*Halaman login dengan validasi keamanan*
+*Ringkasan kondisi wilayah & kesiapsiagaan*
 
 </div>
 
@@ -196,53 +307,24 @@ Sistem autentikasi khusus untuk admin dengan keamanan berlapis dan session manag
 <tr>
 <td width="50%">
 
-<div align="center">
+#### 📝 Pengajuan Laporan Dampak
+Form pelaporan kondisi wilayah dengan format terstruktur dan validasi otomatis.
 
-![Dashboard Admin](screenshots/halamanUtama_admin.png)
-
-*Control panel admin dengan overview sistem*
-
-</div>
-
-</td>
-<td width="50%">
-
-#### 🎛️ Dashboard Administrator
-Panel kontrol lengkap dengan overview statistik sistem, pending reports, dan quick actions.
-
-**Fitur dashboard:**
-- 📊 Total reports overview
-- ⚠️ Pending verification alerts
-- 👥 Active users count
-- 📈 Trend analysis
-- 🔔 Real-time notifications
-- ⚡ Quick action buttons
-
-</td>
-</tr>
-
-<tr>
-<td width="50%">
-
-#### ✅ Manajemen Verifikasi
-Sistem verifikasi laporan dengan workflow yang terstruktur untuk memastikan validitas data.
-
-**Workflow verifikasi:**
-1. Review laporan baru
-2. Validasi dokumentasi
-3. Cross-check lokasi
-4. Approve/reject dengan alasan
-5. Notifikasi ke user
-6. Archive & analytics
+**Data yang dikumpulkan:**
+- Identitas pelapor
+- Lokasi kejadian
+- Kondisi cuaca
+- Tingkat dampak
+- Catatan situasi lapangan
 
 </td>
 <td width="50%">
 
 <div align="center">
 
-![Halaman Utama Admin](screenshots/halamanUtama_admin.png)
+![Halaman Ajuan](screenshot/HalamanAjuan.png)
 
-*Interface verifikasi dengan filter advanced*
+*Form pelaporan dampak cuaca & bencana*
 
 </div>
 
@@ -252,31 +334,113 @@ Sistem verifikasi laporan dengan workflow yang terstruktur untuk memastikan vali
 <tr>
 <td width="50%">
 
-<div align="center">
+#### 📊 Statistik & Insight Regional
+Visualisasi laporan dalam bentuk grafik serta insight analisis berbasis data.
 
-![Simulasi Chat](screenshots/SimulasiPesan_AdminToUser_danSebaliknya.png)
-
-*Sistem chat real-time dua arah*
-
-</div>
+**Fitur statistik:**
+- Tren laporan mingguan
+- Total laporan aktif
+- Update waktu real-time
+- Status sistem
+- Insight analisis wilayah
 
 </td>
 <td width="50%">
 
-#### 💬 Komunikasi Real-time
-Fitur chat untuk komunikasi langsung antara admin dan user untuk klarifikasi laporan atau follow-up.
+<div align="center">
 
-**Fitur chat:**
-- Real-time messaging
-- Read receipts
-- Typing indicators
-- File attachment
-- Message history
-- Quick reply templates
-- Multi-user support
+![Statistik 1](screenshot/halamanStatistik.png)
+![Statistik 2](screenshot/HalamanStatistik2.png)
+
+*Grafik & insight berbasis laporan masyarakat*
+
+</div>
 
 </td>
 </tr>
+
+<tr>
+<td width="50%">
+
+#### 📰 Portal Berita Cuaca & Bencana
+Pusat informasi terpercaya mengenai cuaca, peringatan dini, dan edukasi kebencanaan.
+
+**Kategori konten:**
+- Info cuaca harian
+- Peringatan bencana
+- Laporan wilayah Sumatra
+- Artikel edukasi & awareness
+- Sumber resmi pemerintah
+
+</td>
+<td width="50%">
+
+<div align="center">
+
+![Halaman Berita](screenshot/halamanBerita.png)
+
+*Berita & edukasi kebencanaan terkurasi*
+
+</div>
+
+</td>
+</tr>
+
+<tr>
+<td width="50%">
+
+#### 💬 Chat Admin (Realtime)
+Fitur komunikasi langsung antara pengguna dan admin
+(menggunakan tampilan chat yang sama seperti versi admin).
+
+**Kemampuan sistem:**
+- Pesan realtime dua arah
+- Riwayat percakapan
+- Indikator status pesan
+- Respons cepat admin
+
+</td>
+<td width="50%">
+
+<div align="center">
+
+![Chat Realtime](screenshot/SimulasiPesan_AdminToUser_danSebaliknya.png)
+
+*Komunikasi pengguna & admin secara langsung*
+
+</div>
+
+</td>
+</tr>
+
+<tr>
+<td width="50%">
+
+#### 🗺️ Peta Pemantauan Sumatra
+Peta interaktif untuk melihat sebaran kejadian bencana & laporan masyarakat  
+untuk yang user sebelah kiri dimana meliputi.
+
+**Fitur peta:**
+- Marker lokasi kejadian
+- Statistik kasus per wilayah
+- Update data realtime
+- Informasi kategori bencana
+- legenda
+
+</td>
+<td width="50%">
+
+<div align="center">
+
+![Peta Sumatra](screenshot/SimulasiMap.png)
+
+*Peta interaktif pemantauan wilayah Sumatra*
+
+</div>
+
+</td>
+</tr>
+
 </table>
 
 ---
@@ -285,61 +449,29 @@ Fitur chat untuk komunikasi langsung antara admin dan user untuk klarifikasi lap
 
 <div align="center">
 
-### 🖥️ User Interface Journey
 
-```
-Landing Page → Dashboard → Ajukan Laporan → Track Status → View Analytics
-```
-
-### 🛠️ Admin Panel Workflow
-
-```
-Login → Dashboard → Verify Reports → Manage Content → Analytics → User Communication
-```
-
-</div>
-
----
-
-## 🚀 Progress Pengembangan
-
-<div align="center">
-
-| Module | Status | Completion |
-|:------:|:------:|:----------:|
-| 🎨 **User Interface** | ![Complete](https://img.shields.io/badge/status-complete-success) | 100% |
-| 📝 **Form Pelaporan** | ![Complete](https://img.shields.io/badge/status-complete-success) | 100% |
-| 🗺️ **Integrasi Peta** | ![Complete](https://img.shields.io/badge/status-complete-success) | 100% |
-| 📊 **Dashboard User** | ![Complete](https://img.shields.io/badge/status-complete-success) | 100% |
-| 🔐 **Admin Panel** | ![Complete](https://img.shields.io/badge/status-complete-success) | 100% |
-| 💬 **Chat System** | ![Complete](https://img.shields.io/badge/status-complete-success) | 100% |
-| 📈 **Analytics** | ![Complete](https://img.shields.io/badge/status-complete-success) | 100% |
-| 📰 **News Portal** | ![Complete](https://img.shields.io/badge/status-complete-success) | 100% |
-| 🧪 **Testing** | ![In Progress](https://img.shields.io/badge/status-in%20progress-yellow) | 75% |
-| 🚀 **Deployment** | ![Planned](https://img.shields.io/badge/status-planned-blue) | 0% |
-
-</div>
-
----
 
 ## 💻 Tech Stack
 
 <div align="center">
 
-### Frontend
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+### 🖥️ Frontend
+![HTML5](https://img.shields.io/badge/HTML5-E14F26?style=for-the-badge&logo=html5&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-FFD700?style=for-the-badge&logo=javascript&logoColor=black)
 
-### Backend
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+### ⚙️ Backend
+![NodeJS](https://img.shields.io/badge/Node.js-3C873A?style=for-the-badge&logo=node.js&logoColor=white)
+![ExpressJS](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 
-### Libraries & Tools
-![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)
-![Leaflet](https://img.shields.io/badge/Leaflet-199900?style=for-the-badge&logo=leaflet&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+### 🗄️ Database
+![MongoDB](https://img.shields.io/badge/MongoDB-4DB33D?style=for-the-badge&logo=mongodb&logoColor=white)
+![MongoDB Compass](https://img.shields.io/badge/MongoDB%20Compass-00A36C?style=for-the-badge&logo=mongodb&logoColor=white)
+
+### 🔌 Realtime & Utility
+![WebSocket](https://img.shields.io/badge/WebSocket-6C63FF?style=for-the-badge&logo=socket.io&logoColor=white)
+![REST API](https://img.shields.io/badge/REST%20API-1F75FE?style=for-the-badge)
+![JSON](https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white)
 
 </div>
 
@@ -351,30 +483,41 @@ Login → Dashboard → Verify Reports → Manage Content → Analytics → User
 
 <table>
 <tr>
-<td align="center" width="50%">
-<img src="https://via.placeholder.com/150" width="150" style="border-radius: 50%"/><br>
-<b>Ramzy Junfaris</b><br>
+
+<td width="50%" align="center">
+<img src="https://via.placeholder.com/150" width="150" style="border-radius: 50%"><br>
+
+<b>Ramzy Junfaris H</b><br>
 <i>Full Stack Developer</i><br><br>
-🔹 System Architecture<br>
-🔹 Backend Development<br>
-🔹 Database Design<br>
-🔹 API Integration
+
+🔹 Perancangan Arsitektur Sistem<br>
+🔹 Pengembangan Backend (Express.js)<br>
+🔹 Manajemen & Desain Database (MongoDB)<br>
+🔹 Integrasi API & Realtime Communication<br>
+🔹 Implementasi Dashboard User & Admin<br>
+🔹 Deployment & Maintenance Sistem
 </td>
-<td align="center" width="50%">
-<img src="https://via.placeholder.com/150" width="150" style="border-radius: 50%"/><br>
-<b>Tatia</b><br>
-<i>Frontend Developer</i><br><br>
-🔹 UI/UX Design<br>
-🔹 Frontend Development<br>
-🔹 Responsive Design<br>
-🔹 User Experience
+
+<td width="50%" align="center">
+<img src="https://via.placeholder.com/150" width="150" style="border-radius: 50%"><br>
+
+<b>Tatia Agustika</b><br>
+<i>UI/UX Designer & Visual Concept</i><br><br>
+
+🔹 Perancangan UI/UX Sistem<br>
+🔹 Desain Antarmuka Halaman<br>
+🔹 Konsistensi Warna & Typography<br>
+🔹 Penyusunan Elemen Visual & Ikon<br>
+🔹 User Experience & Layouting
 </td>
+
 </tr>
 </table>
 
 </div>
 
 ---
+
 
 ## 📝 Lisensi
 
