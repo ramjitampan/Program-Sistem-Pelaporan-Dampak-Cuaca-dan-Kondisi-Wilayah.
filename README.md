@@ -481,36 +481,103 @@ untuk yang user sebelah kiri dimana meliputi.
 
 <div align="center">
 
+### 💫 Berkenalan dengan Kreator SIPACU
+
+*Dua individu berbakat yang berkolaborasi menciptakan solusi inovatif untuk monitoring dampak cuaca*
+
+</div>
+
+---
+
 <table>
 <tr>
-
 <td width="50%" align="center">
-<img src="https://via.placeholder.com/150" width="150" style="border-radius: 50%"><br>
 
-<b>Ramzy Junfaris H</b><br>
-<i>Full Stack Developer</i><br><br>
+<img src="screenshot/ramzy Junfaris H.jpeg" width="200" style="border-radius: 50%; border: 4px solid #667eea; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
 
-🔹 Perancangan Arsitektur Sistem<br>
-🔹 Pengembangan Backend (Express.js)<br>
-🔹 Manajemen & Desain Database (MongoDB)<br>
-🔹 Integrasi API & Realtime Communication<br>
-🔹 Implementasi Dashboard User & Admin<br>
-🔹 Deployment & Maintenance Sistem
+### **Ramzy Junfaris H**
+#### `< Developer />`
+
+<div align="left">
+
+**🎯 Spesialisasi:**
+- 🏗️ Perancangan Arsitektur Sistem
+- ⚙️ Pengembangan Backend (Express.js)
+- 🗄️ Manajemen & Desain Database (MongoDB)
+- 🔌 Integrasi API & Realtime Communication
+- 📊 Implementasi Dashboard User & Admin
+- 🚀 Deployment & Maintenance Sistem
+
+**💼 Peran:**
+```
+System Architect | Backend Engineer | Database Designer
+```
+
+**🛠️ Tech Stack:**
+`JavaScript` • `Node.js` • `Express.js` • `MongoDB` • `Socket.io` • `REST API`
+
+</div>
+
 </td>
-
 <td width="50%" align="center">
-<img src="https://via.placeholder.com/150" width="150" style="border-radius: 50%"><br>
 
-<b>Tatia Agustika</b><br>
-<i>UI/UX Designer & Visual Concept</i><br><br>
+<img src="screenshot/Tatia.png" width="200" style="border-radius: 50%; border: 4px solid #f093fb; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
 
-🔹 Perancangan UI/UX Sistem<br>
-🔹 Desain Antarmuka Halaman<br>
-🔹 Konsistensi Warna & Typography<br>
-🔹 Penyusunan Elemen Visual & Ikon<br>
-🔹 User Experience & Layouting
+### **Tatia Agustika**
+#### `{ UI/UX Designer & Visual Concept }`
+
+<div align="left">
+
+**🎯 Spesialisasi:**
+- 🎨 Perancangan UI/UX Sistem
+- 🖌️ Desain Antarmuka Halaman
+- 🌈 Konsistensi Warna & Typography
+- ✨ Penyusunan Elemen Visual & Ikon
+- 📱 User Experience & Layouting
+
+**💼 Peran:**
+```
+UI/UX Designer | Visual Designer | Frontend Developer
+```
+
+**🛠️ Design Tools:**
+`Figma` • `Canva` • `HTML/CSS` • `JavaScript` • `Tailwind CSS`
+
+</div>
+
 </td>
+</tr>
+</table>
 
+---
+
+<div align="center">
+
+### 🤝 Filosofi Kolaborasi
+
+<table>
+<tr>
+<td align="center" width="33%">
+
+**⚡ Inovasi**
+
+Menciptakan solusi yang tidak hanya fungsional, tetapi juga memberikan dampak nyata bagi masyarakat
+
+</td>
+<td align="center" width="33%">
+
+**🎯 Presisi**
+
+Setiap detail dirancang dengan cermat, dari backend architecture hingga pixel-perfect UI
+
+</td>
+<td align="center" width="33%">
+
+**🚀 Eksekusi**
+
+Kombinasi sempurna antara technical expertise dan creative vision
+
+</td>
 </tr>
 </table>
 
@@ -518,6 +585,7 @@ untuk yang user sebelah kiri dimana meliputi.
 
 ---
 
+<div align="center">
 
 ## 📝 Lisensi
 
@@ -529,7 +597,6 @@ Proyek ini dikembangkan untuk keperluan akademik - **Praktikum Pemrograman Jarin
 
 </div>
 
----
 
 <div align="center">
 
@@ -537,11 +604,6 @@ Proyek ini dikembangkan untuk keperluan akademik - **Praktikum Pemrograman Jarin
 
 **Made with ❤️ by Tatia & Ramzy Junfaris**
 
----
-
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=sipacu.readme)
-![Last Commit](https://img.shields.io/badge/last%20commit-january%202025-brightgreen)
-![Platform](https://img.shields.io/badge/platform-web-blue)
 
 [⬆ Kembali ke atas](#sipacu---sistem-pelaporan-dampak-cuaca--kondisi-wilayah)
 
