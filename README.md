@@ -50,32 +50,47 @@ Proyek ini dikembangkan sebagai bagian dari praktikum **Pemrograman Jaringan** d
 
 ---
 
-## ✨ Fitur Utama
+## ✨ Fitur Utama SIPACU
 
-### Fitur User
+Halaman utama SIPACU berfungsi sebagai portal pengenalan sistem sekaligus
+gerbang masuk menuju dashboard pelaporan dan pemantauan bencana.
+
+Tampilan dirancang dengan pendekatan modern, responsif, dan informatif sehingga
+pengguna langsung memahami tujuan sistem serta alur penggunaan sebelum masuk ke dashboard.
+
+---
+
+### 🌍 Halaman Beranda (Landing Page Utama)
 
 <table>
 <tr>
 <td width="50%">
 
-#### 📊 Dashboard Informasi
-Menampilkan ringkasan kondisi cuaca, lokasi pemantauan, tingkat risiko wilayah, serta informasi kesiapsiagaan yang relevan untuk pengambilan keputusan cepat.
+#### 🖥️ Tampilan Halaman Utama
 
-**Fitur unggulan:**
-- Real-time weather updates
-- Risk level indicators
-- Quick access menu
-- Responsive card layout
+Halaman ini berfungsi sebagai pengantar sistem dengan menampilkan:
+
+**Informasi yang ditampilkan:**
+- Nama sistem & deskripsi fungsi utama
+- Penjelasan singkat tujuan platform
+- Tombol akses menuju dashboard
+- Struktur layout responsif & user–friendly
+
+**Peran halaman:**
+- Memberikan gambaran sistem secara ringkas
+- Menjadi halaman pembuka sebelum user masuk aplikasi
+- Menjadi identitas dan branding sistem SIPACU
 
 </td>
 <td width="50%">
 
 <div align="center">
 
-![Dashboard 1](screenshots/dashboard-1.png)
-![Dashboard 2](screenshots/dashboard-2.png)
+![Landing 1](screenshot/dashbord%20(1).png)
+![Landing 2](screenshot/dashbord%20(2).png)
+![Landing 3](screenshot/dashbord%20(3).png)
 
-*Dashboard dengan informasi cuaca dan kategori dampak*
+*Halaman beranda SIPACU — halaman portal sebelum masuk dashboard*
 
 </div>
 
@@ -85,50 +100,28 @@ Menampilkan ringkasan kondisi cuaca, lokasi pemantauan, tingkat risiko wilayah, 
 <tr>
 <td width="50%">
 
-<div align="center">
+#### ⚙️ Seksi "Fitur Utama SIPACU"
 
-![Dashboard 3](screenshots/dashboard-3.png)
+Bagian ini menjelaskan inti kemampuan sistem secara ringkas agar mudah dipahami pengguna sebelum menggunakan aplikasi.
 
-*Filter dan pencarian laporan interaktif*
+**Fitur yang diperkenalkan:**
+- Pemantauan Real-time kondisi cuaca & wilayah
+- Pelaporan cepat berbasis form digital
+- Analisis data berbasis laporan masyarakat
 
-</div>
-
-</td>
-<td width="50%">
-
-#### 🔍 Sistem Pencarian & Filter
-Interface yang intuitif untuk mencari dan memfilter laporan berdasarkan kategori, lokasi, dan rentang waktu.
-
-**Kemampuan:**
-- Multi-parameter filtering
-- Real-time search results
-- Export data capability
-- Advanced sorting options
-
-</td>
-</tr>
-
-<tr>
-<td width="50%">
-
-#### 📝 Pengajuan Laporan
-Form pelaporan yang komprehensif dengan validasi otomatis untuk memastikan data yang dikirimkan lengkap dan akurat.
-
-**Komponen form:**
-- Jenis kejadian (dropdown)
-- Lokasi dengan map picker
-- Deskripsi dampak (rich text)
-- Upload dokumentasi foto
-- Tingkat keparahan
+**Tujuan section ini:**
+- Memberikan edukasi fungsi sistem
+- Mengarahkan pengguna ke fitur inti
+- Menjadi informasi ringkas non-teknis
 
 </td>
 <td width="50%">
 
 <div align="center">
 
-![Halaman Ajuan](screenshots/HalamanAjuan.png)
+![Section Fitur](screenshot/dashbord%20(2).png)
 
-*Form pengajuan laporan dengan validasi*
+*Bagian penjelasan fitur utama SIPACU*
 
 </div>
 
@@ -138,142 +131,37 @@ Form pelaporan yang komprehensif dengan validasi otomatis untuk memastikan data 
 <tr>
 <td width="50%">
 
-<div align="center">
+#### 🔎 Seksi "Bagaimana SIPACU Bekerja?"
 
-![Simulasi Map](screenshots/SimulasiMap.png)
+Bagian ini menjelaskan alur penggunaan sistem secara bertahap.
 
-*Peta interaktif dengan marker lokasi kejadian*
+**Alur sistem yang ditampilkan:**
+1️⃣ Pantau kondisi cuaca & status wilayah  
+2️⃣ Laporkan kejadian melalui form pelaporan  
+3️⃣ Data dikumpulkan untuk analisis & evaluasi
 
-</div>
-
-</td>
-<td width="50%">
-
-#### 🗺️ Peta Interaktif
-Visualisasi geografis kejadian dengan marker yang dapat diklik untuk melihat detail lengkap setiap laporan.
-
-**Teknologi:**
-- Leaflet.js integration
-- Custom marker icons
-- Cluster grouping
-- GPS coordinate picker
-- Radius area affected
-
-</td>
-</tr>
-
-<tr>
-<td width="50%">
-
-#### 📋 Detail Laporan
-Halaman detail yang menampilkan informasi lengkap laporan termasuk timeline pemrosesan dan status terkini.
-
-**Informasi tersedia:**
-- Status verifikasi
-- Timeline processing
-- Foto dokumentasi
-- Komentar admin
-- History updates
+**Manfaat untuk pengguna:**
+- Memudahkan pemahaman alur sistem
+- Mengarahkan pengguna ke proses yang benar
+- Memberikan gambaran workflow aplikasi
 
 </td>
 <td width="50%">
 
 <div align="center">
 
-![Detail Laporan](screenshots/DetailLaporan.png)
+![How it Works](screenshot/dashbord%20(3).png)
 
-*Detail lengkap dengan status tracking*
-
-</div>
-
-</td>
-</tr>
-
-<tr>
-<td width="50%">
-
-<div align="center">
-
-![Halaman User](screenshots/HalamanUser.png)
-
-*Dashboard personal user dengan riwayat lengkap*
+*Visualisasi alur kerja sistem SIPACU*
 
 </div>
-
-</td>
-<td width="50%">
-
-#### 👤 Halaman User Profile
-Dashboard personal yang menampilkan semua laporan yang pernah diajukan beserta statistik aktivitas pengguna.
-
-**Informasi ditampilkan:**
-- ⏳ Laporan pending
-- ✅ Laporan diverifikasi
-- ❌ Laporan ditolak
-- 📊 Statistik kontribusi
-- 🏆 Badge achievements
-
-</td>
-</tr>
-
-<tr>
-<td width="50%">
-
-#### 📈 Statistik Personal
-Visualisasi data personal dalam bentuk grafik dan chart untuk memudahkan analisis pola pelaporan.
-
-**Visualisasi:**
-- Line chart trending
-- Bar chart per kategori
-- Pie chart distribusi
-- Monthly comparison
-- Export to PDF/Excel
-
-</td>
-<td width="50%">
-
-<div align="center">
-
-![Statistik 1](screenshots/halamanStatistik.png)
-![Statistik 2](screenshots/HalamanStatistik2.png)
-
-*Grafik statistik dengan analisis mendalam*
-
-</div>
-
-</td>
-</tr>
-
-<tr>
-<td width="50%">
-
-<div align="center">
-
-![Halaman Berita](screenshots/halamanBerita.png)
-
-*Portal berita dan edukasi kebencanaan*
-
-</div>
-
-</td>
-<td width="50%">
-
-#### 📰 Berita & Edukasi
-Portal informasi terkini mengenai cuaca, bencana, dan tips kesiapsiagaan untuk meningkatkan awareness masyarakat.
-
-**Konten tersedia:**
-- Breaking news alerts
-- Educational articles
-- Safety guidelines
-- Weather forecasts
-- Emergency procedures
-- Video tutorials
 
 </td>
 </tr>
 </table>
 
 ---
+
 
 ### Fitur Admin
 
