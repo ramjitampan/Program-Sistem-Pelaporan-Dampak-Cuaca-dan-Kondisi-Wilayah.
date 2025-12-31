@@ -68,7 +68,7 @@ Proyek ini dikembangkan sebagai bagian dari praktikum **Pemrograman Jaringan** d
 Menampilkan ringkasan kondisi cuaca, lokasi pemantauan, tingkat risiko wilayah, serta informasi kesiapsiagaan yang relevan
 </td>
 <td align="center">
-<img src="assets/dashboard-user.png" alt="Dashboard" width="150"/><br/>
+<img src="screenshot/HalamanUser.png" alt="Dashboard" width="150"/><br/>
 <em>Akan ditambahkan</em>
 </td>
 </tr>
