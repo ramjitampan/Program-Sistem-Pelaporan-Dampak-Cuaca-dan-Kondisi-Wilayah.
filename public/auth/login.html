@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - SIPACU</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body class="bg-gradient-login text-gray-200 font-sans min-h-screen">
+  
+  <div class="container mx-auto px-4 py-8 flex flex-col items-center justify-center min-h-screen">
+    <!-- Header dengan Logo -->
+    <div class="text-center mb-8">
+      <div class="logo-sipacu w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+        <i class="fas fa-shield-alt text-white text-3xl"></i>
+      </div>
+      <h1 class="text-3xl font-bold text-white mb-2">SIPACU</h1>
+      <p class="text-gray-400">Sistem Pelaporan Dampak Cuaca</p>
+    </div>
+
+    <!-- Form Container -->
+    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl shadow-2xl p-8 w-full max-w-md">
+      <!-- Form Title -->
+      <h2 class="text-2xl font-bold text-white mb-1">Masuk ke Akun</h2>
+      <p class="text-gray-400 mb-6">Silakan masuk untuk mengakses sistem</p>
+
+      <!-- Form Login -->
+      <form id="formLogin" class="space-y-4">
+        <!-- Alert Message (hidden by default) -->
+        <div id="pesanError" class="hidden alert-message bg-red-900/30 border border-red-800 text-red-300 px-4 py-3 rounded-lg">
+          <i class="fas fa-exclamation-circle mr-2"></i>
+          <span id="teksPesanError"></span>
+        </div>
+        
+        <!-- Email Input -->
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-2">
+            <i class="fas fa-envelope mr-2"></i>Alamat Email
+          </label>
+          <input 
+            name="email" 
+            type="email" 
+            placeholder="contoh@email.com"
+            class="w-full input-field p-3 rounded-lg text-white focus:outline-none"
+            required
+            autocomplete="email">
+        </div>
+        
+        <!-- Password Input -->
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-2">
+            <i class="fas fa-lock mr-2"></i>Kata Sandi
+          </label>
+          <input 
+            name="password" 
+            type="password" 
+            placeholder="Masukkan kata sandi"
+            class="w-full input-field p-3 rounded-lg text-white focus:outline-none"
+            required
+            autocomplete="current-password">
+        </div>
+        
+        <!-- Submit Button -->
+        <button 
+          type="submit" 
+          id="tombolMasuk"
+          class="w-full btn-primary text-white font-semibold py-3 rounded-lg mt-2 flex items-center justify-center gap-2">
+          <i class="fas fa-sign-in-alt"></i>
+          <span>Masuk ke Sistem</span>
+        </button>
+        
+        <!-- Divider -->
+        <div class="relative my-6">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-700"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-4 bg-gray-800/50 text-gray-400">Atau</span>
+          </div>
+        </div>
+        
+        <!-- Register Section -->
+        <div class="text-center pt-4 border-t border-gray-700/50">
+          <p class="text-gray-400 mb-4">Belum memiliki akun?</p>
+          <button 
+            type="button" 
+            id="tombolDaftar"
+            class="w-full btn-secondary text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-2">
+            <i class="fas fa-user-plus"></i>
+            <span>Daftar Akun Baru</span>
+          </button>
+          
+          <p class="text-sm text-gray-400 mt-4">
+            Hanya melakukan Tugas kuliah hak cipat © 2025 Ramzy Junfaris H dan Tatia Agustika
+          </p>
+        </div>
+      </form>
+      
+      <!-- Guest Access -->
+      <div class="mt-6 text-center">
+        <p class="text-gray-400 text-sm mb-2">Ingin melihat informasi publik?</p>
+        <a href="/MapSumatra" class="text-sm link-register inline-flex items-center gap-1">
+          <i class="fas fa-map-marked-alt"></i>
+          Akses Peta sumatra Publik
+        </a>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="mt-8 text-center text-gray-500 text-sm">
+      <p>&copy; 2024 SIPACU - Sistem Pelaporan Dampak Cuaca. Hak cipta dilindungi.</p>
+      <p class="mt-1">Versi 2.1.0 | <a href="#" class="link-register">Bantuan</a> | <a href="#" class="link-register">Kontak</a></p>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="/js/auth.js"></script>
+  <script>require("dotenv").config();
+const express = require("express");
+const http = require("http");
+const cors = require("cors");
+const { Server } = require("socket.io");
+
+const authRoutes = require("./routes/auth");
+const initSocket = require("./konfigurasi/socket");
+
+const app = express();
+const server = http.createServer(app);
+const io = new Server(server, { cors: { origin: "*" } });
+
+initSocket(io);
+
+app.use(cors());
+app.use(express.json());
+app.use("/api/auth", authRoutes);
+app.use(express.static("public"));
+
+server.listen(3000, () => {
+  console.log("✅ SERVER 3000");
+});
+</script>
+</body>
+</html>

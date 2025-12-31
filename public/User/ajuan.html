@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIPACU | Ajuan Laporan</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font & Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        .bg-gradient-sidebar {
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+        }
+        
+        .shadow-custom {
+            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .bg-gradient-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .severity-btn {
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(30, 41, 59, 0.5);
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .severity-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .severity-btn.active {
+            border-color: currentColor;
+        }
+        
+        .severity-low.active {
+            background-color: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border-color: #22c55e;
+        }
+        
+        .severity-moderate.active {
+            background-color: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+            border-color: #f59e0b;
+        }
+        
+        .severity-critical.active {
+            background-color: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border-color: #ef4444;
+        }
+        
+        .upload-area {
+            border: 2px dashed rgba(59, 130, 246, 0.5);
+            border-radius: 12px;
+            padding: 40px 20px;
+            background-color: rgba(30, 41, 59, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .upload-area:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.7);
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            ring: 2px;
+        }
+        
+        .form-label {
+            color: #cbd5e1;
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #ef4444;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-200 font-[Inter]">
+
+<div class="flex min-h-screen">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-gradient-sidebar p-6 shadow-custom">
+        <div class="flex items-center mb-10">
+            <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mr-3">
+                <i class="fas fa-shield-alt text-white"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white">SIPACU</h2>
+        </div>
+
+        <nav class="space-y-3">
+            <a href='/Dashbord_user' class="flex items-center p-3 rounded-lg hover:bg-gray-700/50">
+                <i class="fas fa-tachometer-alt mr-3"></i>Dashboard
+            </a>
+            
+            <!-- Menu Ajuan (Active) -->
+            <a href="/ajuan" class="flex items-center p-3 rounded-lg bg-blue-900/40 text-blue-300">
+                <i class="fas fa-file-upload mr-3"></i>Ajuan
+            </a>
+
+            <!-- Menu Statistik -->
+            <a href="/Statistik" class="flex items-center p-3 rounded-lg hover:bg-gray-700/50">
+                <i class="fas fa-chart-bar mr-3"></i>Statistik
+            </a>
+            
+            <!-- Menu Berita -->
+            <a href="/Berita" class="flex items-center p-3 rounded-lg hover:bg-gray-700/50">
+                <i class="far fa-newspaper mr-3"></i>Berita
+            </a>
+
+            <!-- Menu Chat-->
+            </a>
+            <a href="/Pesan_denganAdmin" class="flex items-center p-3 rounded-lg hover:bg-gray-700/50">
+                <i class="far fa-comment-dots mr-3"></i>Chat Admin
+            </a>
+
+            <!-- Menu Peta Sumatra -->
+            <a href="/MapSumatra" class="flex items-center p-3 rounded-lg hover:bg-gray-700/50">
+                <i class="fas fa-map mr-3"></i>Peta Sumatra
+            </a>
+        </nav>
+
+        <div class="mt-10 p-4 bg-gray-800/50 rounded-lg">
+            <a href="/login" class="mt-10 p-4 bg-red-900/20 hover:bg-red-900/40 border border-red-500/30 rounded-lg block transition-all duration-200 group">
+    <p class="text-sm text-red-400 font-medium group-hover:text-red-300">Sesi Akun</p>
+    <p class="text-red-300 text-sm mt-1 flex items-center">
+        <!-- Ikon Logout FontAwesome -->
+        <i class="fas fa-sign-out-alt mr-2"></i>
+        Keluar dari Aplikasi
+    </p>
+    <p class="text-xs text-red-400/60 mt-2">Klik untuk mengakhiri sesi Anda</p>
+</a>
+
+        </div>
+    </aside>
+
+    <!-- KONTEN UTAMA -->
+    <main class="flex-1 p-6 space-y-6 overflow-y-auto">
+        <!-- HEADER -->
+        <div class="flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold">
+                    Ajuan Laporan Baru
+                </h1>
+                <p class="text-gray-400">
+                    <span class="text-blue-300">Dashboard</span> / <span class="text-blue-300">Monitoring</span> / <span>Submit Report</span>
+                </p>
+            </div>
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-400">Pengguna</p>
+                    <p class="font-medium">Andi Susanto</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORM AJUAN -->
+        <div class="bg-gradient-card p-6 rounded-xl">
+            <!-- Header Form -->
+            <div class="mb-8">
+                <h2 class="text-xl font-bold mb-2">Weather Impact Report</h2>
+                <p class="text-gray-400">File a new incident report regarding weather conditions and regional impact for the SIPACU monitoring system.</p>
+            </div>
+            
+            <!-- Form Sections -->
+            <form id="reportForm">
+                <!-- Reporter Information -->
+                <div class="mb-10">
+                    <h3 class="text-lg font-bold mb-6 pb-2 border-b border-gray-700">Reporter Information</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="form-label required">Reporter Name</label>
+                            <input 
+                                type="text" 
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                name="namaPelapor"
+                                placeholder="contoh budi"
+                                required>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label required">Role / Department</label>
+                            <input 
+                                type="text" 
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                name="peran"
+                                placeholder="contoh: Relawan BPBD"
+                                required>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Incident Details -->
+                <div class="mb-10">
+                    <h3 class="text-lg font-bold mb-6 pb-2 border-b border-gray-700">Incident Details</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="form-label required">Affected Region</label>
+                            <select nama="wilayah" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select Kecamatan/Kelurahan</option>
+                                <option value="padang">Padang, Sumatera Barat</option>
+                                <option value="medan">Medan, Sumatera Utara</option>
+                                <option value="banda_aceh">Banda Aceh, Aceh</option>
+                                <option value="pekanbaru">Pekanbaru, Riau</option>
+                                <option value="palembang">Palembang, Sumatera Selatan</option>
+                                <option value="jambi">Jambi, Jambi</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label required">Weather Condition</label>
+                            <select nama="kondisiCuaca" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select condition</option>
+                                <option value="heavy_rain">Hujan Lebat</option>
+                                <option value="thunderstorm">Badai Petir</option>
+                                <option value="flood">Banjir</option>
+                                <option value="landslide">Tanah Longsor</option>
+                                <option value="strong_wind">Angin Kencang</option>
+                                <option value="drought">Kekeringan</option>
+                                <option value="fog">Kabut Tebal</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Impact Severity -->
+                    <div>
+                        <label class="form-label required mb-4 block">Impact Severity</label>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <button type="button" class="severity-btn severity-low active" data-severity="low">
+                                <div class="flex flex-col items-center">
+                                    <i class="fas fa-check-circle text-2xl mb-2"></i>
+                                    <span class="font-medium">Low Impact</span>
+                                    <span class="text-xs text-gray-400 mt-1">Minimal kerusakan</span>
+                                </div>
+                            </button>
+                            
+                            <button type="button" class="severity-btn severity-moderate" data-severity="moderate">
+                                <div class="flex flex-col items-center">
+                                    <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
+                                    <span class="font-medium">Moderate</span>
+                                    <span class="text-xs text-gray-400 mt-1">Kerusakan sedang</span>
+                                </div>
+                            </button>
+                            
+                            <button type="button" class="severity-btn severity-critical" data-severity="critical">
+                                <div class="flex flex-col items-center">
+                                    <i class="fas fa-skull-crossbones text-2xl mb-2"></i>
+                                    <span class="font-medium">Critical</span>
+                                    <span class="text-xs text-gray-400 mt-1">Kerusakan parah</span>
+                                </div>
+                            </button>
+                        </div>
+                        <input type="hidden" id="severityInput" name="severity" value="low">
+                    </div>
+                </div>
+                
+                <!-- Observation Notes -->
+                <div class="mb-10">
+                    <h3 class="text-lg font-bold mb-4">Observation Notes</h3>
+                    <p class="text-gray-400 mb-4">Describe the current situation, damage observed, and immediate needs...</p>
+                    
+                    <textarea nama="catatan" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent h-40"
+                        placeholder="Contoh: Hujan lebat sejak 3 hari terakhir menyebabkan banjir di wilayah Kecamatan A dengan ketinggian air mencapai 1.5 meter. Beberapa rumah terendam, akses jalan terputus, dan warga membutuhkan bantuan makanan dan obat-obatan..."
+                    ></textarea>
+                </div>
+                
+                <!-- Attach Site Photos -->
+                <div class="mb-10">
+                    <h3 class="text-lg font-bold mb-4">Attach Site Photos</h3>
+                    <p class="text-gray-400 mb-4">Click to upload or drag and drop</p>
+                    <p class="text-sm text-gray-400 mb-6">SVG, PNG, JPG or GIF (MAX. 5MB)</p>
+                    
+                    <div class="upload-area" id="uploadArea">
+                        <div class="text-center">
+                            <i class="fas fa-cloud-upload-alt text-4xl text-blue-400 mb-4"></i>
+                            <p class="font-medium mb-2">Drag & drop files here</p>
+                            <p class="text-gray-400 text-sm mb-4">or click to browse</p>
+                            <button type="button" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium">
+                                <i class="fas fa-upload mr-2"></i> Browse Files
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Uploaded files preview -->
+                    <div class="mt-4 hidden" id="uploadedFiles">
+                        <p class="text-sm text-gray-400 mb-2">Uploaded files:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <!-- Files will appear here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Form Actions -->
+                <div class="flex justify-end space-x-4 pt-6 border-t border-gray-700">
+                    <button type="button" class="px-8 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg font-medium">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium flex items-center">
+                        <i class="fas fa-paper-plane mr-2"></i> Submit Report
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Footer -->
+        <div class="text-center text-gray-500 text-sm pt-6 border-t border-gray-800">
+            <p>© 2024 SIPACU - Sistem Pelaporan Dampak Cuaca. All rights reserved.</p>
+        </div>
+    </main>
+</div>
+
+<script>
+    // Severity Selection
+    document.querySelectorAll('.severity-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            document.querySelectorAll('.severity-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Update hidden input value
+            const severity = this.getAttribute('data-severity');
+            document.getElementById('severityInput').value = severity;
+        });
+    });
+    
+    // File Upload
+    const uploadArea = document.getElementById('uploadArea');
+    const uploadedFiles = document.getElementById('uploadedFiles');
+    
+    uploadArea.addEventListener('click', function() {
+        // Create file input
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = 'image/*';
+        fileInput.multiple = true;
+        
+        fileInput.addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                // Show uploaded files section
+                uploadedFiles.classList.remove('hidden');
+                
+                // Clear previous files
+                const filesContainer = uploadedFiles.querySelector('.flex');
+                filesContainer.innerHTML = '';
+                
+                // Add each file
+                Array.from(e.target.files).forEach(file => {
+                    const fileElement = document.createElement('div');
+                    fileElement.className = 'flex items-center bg-gray-800 px-3 py-2 rounded-lg';
+                    fileElement.innerHTML = `
+                        <i class="fas fa-file-image text-blue-400 mr-2"></i>
+                        <span class="text-sm">${file.name}</span>
+                        <button class="ml-3 text-red-400 hover:text-red-300" onclick="this.parentElement.remove()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    filesContainer.appendChild(fileElement);
+                });
+            }
+        });
+        
+        fileInput.click();
+    });
+    
+    // Drag and drop functionality
+    uploadArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        this.style.backgroundColor = 'rgba(59, 130, 246, 0.15)';
+        this.style.borderColor = 'rgba(59, 130, 246, 0.8)';
+    });
+    
+    uploadArea.addEventListener('dragleave', function() {
+        this.style.backgroundColor = '';
+        this.style.borderColor = '';
+    });
+    
+    uploadArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        this.style.backgroundColor = '';
+        this.style.borderColor = '';
+        
+        // Similar functionality as file input change
+        if (e.dataTransfer.files.length > 0) {
+            uploadedFiles.classList.remove('hidden');
+            
+            const filesContainer = uploadedFiles.querySelector('.flex');
+            filesContainer.innerHTML = '';
+            
+            Array.from(e.dataTransfer.files).forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const fileElement = document.createElement('div');
+                    fileElement.className = 'flex items-center bg-gray-800 px-3 py-2 rounded-lg';
+                    fileElement.innerHTML = `
+                        <i class="fas fa-file-image text-blue-400 mr-2"></i>
+                        <span class="text-sm">${file.name}</span>
+                        <button class="ml-3 text-red-400 hover:text-red-300" onclick="this.parentElement.remove()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    filesContainer.appendChild(fileElement);
+                }
+            });
+        }
+    });
+    
+    document.getElementById("reportForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const wilayah = document.querySelector('select').value;
+  const jenisBencana = document.querySelectorAll('select')[1].value;
+  const tingkatDampak = document.getElementById('severityInput').value;
+  const deskripsi = document.querySelector('textarea').value;
+
+  try {
+    const respon = await fetch("/api/laporan", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        wilayah,
+        jenisBencana,
+        tingkatDampak,
+        deskripsi
+      })
+    });
+
+    if (!respon.ok) throw new Error();
+
+    alert("Laporan berhasil dikirim");
+
+    // reset form dengan BENAR
+    this.reset();
+    document.querySelectorAll('.severity-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector('.severity-low').classList.add('active');
+    document.getElementById('severityInput').value = 'low';
+
+  } catch (error) {
+    console.error(error);
+    alert("Gagal kirim data");
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIPACU Admin - Sistem Pelaporan Bencana</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/admin_Dashbord.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primer: '#0ea5e9',
+                        sekunder: '#0c4a6e',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 font-sans">
+<div class="flex min-h-screen">
+
+    <!-- SIDEBAR NAVIGASI -->
+    <aside class="w-72 bg-slate-900/50 backdrop-blur-xl border-r border-slate-800/50 flex flex-col">
+        <div class="p-6 gelombang-bg">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-12 h-12 bg-gradient-to-br from-sky-400 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold text-white">SIPACU</h2>
+                    <p class="text-xs text-sky-300">Sistem Pelaporan Bencana</p>
+                </div>
+            </div>
+        </div>
+
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="#" class="flex items-center gap-4 px-4 py-3 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-xl shadow-lg">
+                <i class="fas fa-chart-line w-5"></i>
+                <span class="font-medium">Dasbor</span>
+            </a>
+            <a href="/PesanUser" class="menu-samping flex items-center gap-4 px-4 py-3 text-slate-300 hover:text-white rounded-xl">
+                <i class="fas fa-comments w-5"></i>
+                <span>Chat Pengguna</span>
+            </a>
+            <a href="/PetaAdmin" class="menu-samping flex items-center gap-4 px-4 py-3 text-slate-300 hover:text-white rounded-xl">
+                <i class="fas fa-map-marked-alt w-5"></i>
+                <span>Peta Kejadian</span>
+            </a>
+            <a href="#" class="menu-samping flex items-center gap-4 px-4 py-3 text-slate-300 hover:text-white rounded-xl">
+                <i class="fas fa-cloud-sun-rain w-5"></i>
+                <span>Monitor Cuaca</span>
+            </a>
+            
+            <div class="pt-4 border-t border-slate-800">
+                <a href="#" class="menu-samping flex items-center gap-4 px-4 py-3 text-slate-300 hover:text-white rounded-xl">
+                    <i class="fas fa-cog w-5"></i>
+                    <span>Pengaturan</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="p-4">
+            <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-4 rounded-xl border border-slate-700">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-sky-400 to-blue-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-white"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-semibold text-sm">Admin Kepala</p>
+                        <p class="text-xs text-slate-400">Super Admin</p>
+                    </div>
+                    <i class="fas fa-chevron-down text-slate-400 text-sm"></i>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    
+    <!-- KONTEN UTAMA -->
+    <main class="flex-1 overflow-auto">
+        
+        <!-- HEADER BAR -->
+        <header class="sticky top-0 z-10 bg-slate-900/80 backdrop-blur-xl border-b border-slate-800/50 px-8 py-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
+                        Ringkasan Dasbor
+                    </h1>
+                    <p class="text-sm text-slate-400 mt-1">Selamat datang kembali, Admin!</p>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <input type="text"
+                               placeholder="Cari laporan..."
+                               class="bg-slate-800/50 border border-slate-700 pl-10 pr-4 py-2.5 rounded-xl text-sm focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 w-64">
+                        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    </div>
+                    
+                    <button class="relative p-2.5 hover:bg-slate-800 rounded-xl transition">
+                        <i class="fas fa-bell text-slate-300"></i>
+                        <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+                    
+                    <button class="p-2.5 hover:bg-slate-800 rounded-xl transition">
+                        <i class="fas fa-question-circle text-slate-300"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="p-8 space-y-6">
+
+            <!-- KARTU STATISTIK -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Total Diterima -->
+                <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-6 rounded-2xl border border-slate-700 shadow-xl">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-file-alt text-blue-400 text-xl"></i>
+                        </div>
+                        <span class="text-xs text-green-400 flex items-center gap-1">
+                            <i class="fas fa-arrow-up"></i> Naik
+                        </span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-1">Total Diterima</p>
+                    <h2 id="totalDiterima" class="text-3xl font-bold">0</h2>
+                    <p class="text-xs text-slate-500 mt-2">Laporan keseluruhan</p>
+                </div>
+
+                <!-- Menunggu Verifikasi -->
+                <div class="bg-gradient-to-br from-yellow-900/40 to-slate-900 p-6 rounded-2xl border border-yellow-700/50 shadow-xl">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-clock text-yellow-400 text-xl"></i>
+                        </div>
+                        <span class="text-xs text-yellow-400 flex items-center gap-1">
+                            <i class="fas fa-exclamation-triangle"></i> Urgent
+                        </span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-1">Menunggu Verifikasi</p>
+                    <h2 id="menungguVerifikasi" class="text-3xl font-bold text-yellow-400">0</h2>
+                    <p class="text-xs text-slate-500 mt-2">Perlu tindakan segera</p>
+                </div>
+
+                <!-- Terverifikasi -->
+                <div class="bg-gradient-to-br from-green-900/40 to-slate-900 p-6 rounded-2xl border border-green-700/50 shadow-xl">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-check-circle text-green-400 text-xl"></i>
+                        </div>
+                        <span class="text-xs text-green-400 flex items-center gap-1">
+                            <i class="fas fa-arrow-up"></i> Selesai
+                        </span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-1">Terverifikasi</p>
+                    <h2 id="terverifikasi" class="text-3xl font-bold text-green-400">0</h2>
+                    <p class="text-xs text-slate-500 mt-2">Status dikonfirmasi</p>
+                </div>
+
+                <!-- Peringatan Waspada -->
+                <div class="kartu-peringatan bg-gradient-to-br from-red-900/60 to-slate-900 p-6 rounded-2xl border border-red-700/50 shadow-xl shadow-red-900/20">
+                    <div class="flex justify-between items-start mb-4">
+                        <div id="iconPeringatan" class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-exclamation-triangle text-red-400 text-xl"></i>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span id="peringatanIndikator" class="text-xs text-red-400 flex items-center gap-1">
+                                <i class="fas fa-circle text-xs"></i> Live
+                            </span>
+                            <span id="peringatanTrend" class="text-xs text-red-300/70 mt-1 hidden">
+                                <i class="fas fa-arrow-up"></i> +<span id="trendCount">0</span>
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-red-300 text-sm mb-1">Peringatan Waspada</p>
+                    <div class="flex items-baseline gap-2">
+                        <h2 id="peringatanAktif" class="text-3xl font-bold text-red-400">0</h2>
+                        <span id="peringatanSatuan" class="text-lg text-red-300/70"></span>
+                    </div>
+                    <div class="mt-2">
+                        <p id="peringatanDetail" class="text-xs text-red-500/70">
+                            Status Respon Penting
+                        </p>
+                        <div id="peringatanBreakdown" class="text-xs text-red-400/80 mt-1 space-y-1 hidden">
+                            <!-- Detail breakdown akan dimasukkan di sini -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- KONTEN GRID -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                <!-- TABEL LAPORAN -->
+                <div class="lg:col-span-2 bg-slate-800/50 backdrop-blur rounded-2xl border border-slate-700/50 shadow-xl overflow-hidden">
+                    <div class="p-6 border-b border-slate-700/50 flex justify-between items-center">
+                        <div>
+                            <h3 class="font-bold text-lg">Laporan Masuk Terbaru</h3>
+                            <p class="text-xs text-slate-400 mt-1">Update real-time dari lapangan</p>
+                        </div>
+                        <button onclick="lihatSemuaLaporan()" class="text-sm text-sky-400 hover:text-sky-300 flex items-center gap-2">
+                            Lihat Semua <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="bg-slate-900/50 text-slate-400 text-xs uppercase tracking-wider">
+                                    <th class="px-6 py-4 text-left font-semibold">Jenis Bencana</th>
+                                    <th class="px-6 py-4 text-left font-semibold">Lokasi</th>
+                                    <th class="px-6 py-4 text-left font-semibold">Waktu</th>
+                                    <th class="px-6 py-4 text-left font-semibold">Tingkat</th>
+                                    <th class="px-6 py-4 text-left font-semibold">Status</th>
+                                    <th class="px-6 py-4 text-left font-semibold">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelLaporan" class="divide-y divide-slate-700/30">
+                                <!-- Data laporan akan dimasukkan di sini -->
+                            </tbody>
+                        </table>
+                        <div id="loadingLaporan" class="p-8 text-center text-slate-500">
+                            <i class="fas fa-spinner fa-spin text-xl mb-2"></i>
+                            <p>Memuat data laporan...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL KANAN -->
+                <div class="space-y-6">
+                    
+                    <!-- ALERT DARURAT -->
+                    <div class="bg-gradient-to-br from-red-900/80 to-red-950/80 p-6 rounded-2xl border border-red-700/50 shadow-xl backdrop-blur">
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="w-12 h-12 bg-red-500/30 rounded-xl flex items-center justify-center animate-pulse">
+                                <i class="fas fa-exclamation-triangle text-red-300 text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-red-200 text-lg">Siaga Darurat</h3>
+                                <p class="text-xs text-red-300/70 mt-1">Level: Kritis</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-red-950/50 p-4 rounded-xl mb-4 border border-red-800/30">
+                            <p class="text-sm text-red-100 leading-relaxed">
+                                Hujan ekstrem terdeteksi di wilayah Sumatra Barat. Potensi banjir dan longsor tinggi. Disarankan siaga penuh.
+                            </p>
+                        </div>
+
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="text-red-300">Wilayah Terdampak:</span>
+                                <span class="text-red-100 font-semibold">8 Kabupaten</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="text-red-300">Intensitas Hujan:</span>
+                                <span class="text-red-100 font-semibold">200 mm/hari</span>
+                            </div>
+                        </div>
+
+                        <button id="tombolDarurat"
+                                class="w-full bg-gradient-to-r from-red-600 to-red-700 py-3 rounded-xl font-semibold text-white hover:from-red-700 hover:to-red-800 transition flex items-center justify-center gap-2">
+                            <i class="fas fa-bullhorn"></i>
+                            Aktifkan Protokol Darurat
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- MODAL DETAIL LAPORAN -->
+<div id="modalDetail" class="fixed inset-0 bg-black/70 hidden z-50 justify-center items-center p-4">
+    <div class="bg-gradient-to-br from-slate-800 to-slate-900 w-full max-w-2xl rounded-2xl border border-slate-700 shadow-2xl animate-slide-in">
+        
+        <!-- HEADER MODAL -->
+        <div class="p-6 border-b border-slate-700/50 flex justify-between items-center">
+            <div>
+                <h3 class="font-bold text-xl text-white">Detail Laporan</h3>
+                <p class="text-sm text-slate-400 mt-1">ID: <span id="detailId" class="font-mono">-</span></p>
+            </div>
+            <button id="tutupModal" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="p-6 max-h-[70vh] overflow-y-auto">
+            
+            <!-- GRID INFORMASI UTAMA -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+                <!-- KOLOM KIRI -->
+                <div class="space-y-4">
+                    <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/30">
+                        <p class="text-xs text-slate-400 mb-2 flex items-center gap-2">
+                            <i class="fas fa-bolt text-yellow-500"></i>
+                            Jenis Bencana
+                        </p>
+                        <p id="detailJenis" class="font-semibold text-white text-lg">-</p>
+                    </div>
+                    
+                    <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/30">
+                        <p class="text-xs text-slate-400 mb-2 flex items-center gap-2">
+                            <i class="fas fa-map-marker-alt text-red-500"></i>
+                            Wilayah / Lokasi
+                        </p>
+                        <p id="detailWilayah" class="font-semibold text-white text-lg">-</p>
+                    </div>
+                </div>
+                
+                <!-- KOLOM KANAN -->
+                <div class="space-y-4">
+                    <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/30">
+                        <p class="text-xs text-slate-400 mb-2 flex items-center gap-2">
+                            <i class="fas fa-signal text-orange-500"></i>
+                            Tingkat Dampak
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <span id="detailTingkat" class="font-semibold text-white text-lg">-</span>
+                            <span id="detailTingkatBadge" class="px-3 py-1 rounded-full text-xs"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/30">
+                        <p class="text-xs text-slate-400 mb-2 flex items-center gap-2">
+                            <i class="fas fa-clock text-blue-500"></i>
+                            Waktu Laporan
+                        </p>
+                        <p id="detailWaktu" class="font-semibold text-white text-lg">-</p>
+                        <p class="text-xs text-slate-400 mt-1" id="detailDurasi"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DESKRIPSI LAPORAN -->
+            <div class="mb-6">
+                <div class="flex items-center justify-between mb-3">
+                    <p class="text-sm text-slate-400 flex items-center gap-2">
+                        <i class="fas fa-file-alt text-green-500"></i>
+                        Deskripsi Lengkap Laporan
+                    </p>
+                    <span id="detailPanjangKarakter" class="text-xs text-slate-500 bg-slate-800/50 px-2 py-1 rounded">0 karakter</span>
+                </div>
+                
+                <div class="bg-slate-800/30 rounded-xl border border-slate-700/50 overflow-hidden">
+                    <div id="detailDeskripsi" 
+                         class="p-4 max-h-60 overflow-y-auto text-slate-200 leading-relaxed text-sm whitespace-pre-line">
+                        <!-- Text akan dimasukkan di sini -->
+                    </div>
+                    
+                    <!-- FOOTER DESKRIPSI -->
+                    <div class="px-4 py-3 bg-slate-900/50 border-t border-slate-700/50 flex justify-between items-center">
+                        <div class="flex items-center gap-2 text-xs text-slate-500">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Deskripsi dari pelapor</span>
+                        </div>
+                        <button onclick="salinDeskripsi()" 
+                                class="text-xs text-sky-400 hover:text-sky-300 flex items-center gap-1 transition">
+                            <i class="far fa-copy"></i> Salin
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STATUS LAPORAN -->
+            <div class="mb-6">
+                <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/30">
+                    <p class="text-xs text-slate-400 mb-3">Status Saat Ini</p>
+                    <span id="detailStatus" class="px-4 py-2 rounded-lg text-sm font-medium inline-block"></span>
+                </div>
+            </div>
+
+            <!-- TOMBOL AKSI -->
+            <div class="pt-5 border-t border-slate-700/50">
+                <h4 class="text-sm text-slate-400 mb-4">Ubah Status Laporan:</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <button id="btnPending"
+                        class="flex items-center justify-center gap-2 bg-yellow-600 hover:bg-yellow-700 py-3 rounded-xl font-medium transition transform hover:-translate-y-0.5 active:translate-y-0">
+                        <i class="fas fa-clock"></i>
+                        <span>Pending</span>
+                    </button>
+                    
+                    <button id="btnVerifikasi"
+                        class="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 py-3 rounded-xl font-medium transition transform hover:-translate-y-0.5 active:translate-y-0">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Verifikasi</span>
+                    </button>
+                    
+                    <button id="btnTolak"
+                        class="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 py-3 rounded-xl font-medium transition transform hover:-translate-y-0.5 active:translate-y-0">
+                        <i class="fas fa-times-circle"></i>
+                        <span>Tolak</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/protokolEmail.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

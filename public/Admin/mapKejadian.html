@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Peta Kejadian - Admin</title>
+
+  <!-- Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="h-screen bg-slate-900 text-white">
+
+<div class="flex h-full">
+
+  <!-- PANEL -->
+  <aside class="w-80 bg-slate-800 p-4 space-y-3">
+    <h2 class="font-bold text-lg">Tambah Kejadian</h2>
+
+    <input id="inputLokasi"
+  placeholder="Cari lokasi (contoh: Takengon)"
+  class="w-full p-2 rounded bg-slate-700">
+
+<button onclick="cariLokasi()"
+  class="w-full bg-slate-600 py-2 rounded">
+  Cari Lokasi
+</button>
+
+<select id="jenisBencana"
+  class="w-full p-2 rounded bg-slate-700">
+  <option value="hujan">🌧️ Hujan</option>
+  <option value="hujan_lebat">⛈️ Hujan Lebat</option>
+  <option value="banjir">🌊 Banjir</option>
+  <option value="longsor">🪨 Longsor</option>
+  <option value="angin">🌪️ Angin Kencang</option>
+</select>
+
+<textarea id="keterangan"
+  placeholder="Keterangan"
+  class="w-full p-2 rounded bg-slate-700"></textarea>
+
+<button onclick="simpanKejadian()"
+  class="w-full bg-blue-600 py-2 rounded">
+  Simpan Marker
+</button>
+
+<button onclick="hapusMarker()"
+  class="w-full bg-red-600 py-2 rounded">
+  Hapus Marker
+</button>
+
+  </aside>
+
+  <!-- MAP -->
+  <div id="petaAdmin" class="flex-1"></div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/PetaAdmin.js"></script>
+</body>
+</html>
