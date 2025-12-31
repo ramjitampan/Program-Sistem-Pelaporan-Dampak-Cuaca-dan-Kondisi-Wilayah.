@@ -1,299 +1,144 @@
-# SIPACU - Sistem Pelaporan Dampak Cuaca & Kondisi Wilayah
+# 📸 Screenshot Gallery - SIPACU
+
+## User Interface
+
+### 1. Landing Page & Dashboard
+<div align="center">
+
+| Dashboard (1) | Dashboard (2) | Dashboard (3) |
+|:-------------:|:-------------:|:-------------:|
+| ![Dashboard 1](screenshots/dashboard-1.png) | ![Dashboard 2](screenshots/dashboard-2.png) | ![Dashboard 3](screenshots/dashboard-3.png) |
+| *Halaman utama dengan informasi cuaca* | *Menu kategori dampak cuaca* | *Filter dan pencarian laporan* |
+
+</div>
+
+### 2. Fitur Pelaporan User
 
 <div align="center">
 
-![SIPACU Logo](assets/placeholder-dashboard.png)
+| Halaman Ajuan | Simulasi Map | Detail Laporan |
+|:-------------:|:------------:|:--------------:|
+| ![Halaman Ajuan](screenshots/HalamanAjuan.png) | ![Simulasi Map](screenshots/SimulasiMap.png) | ![Detail Laporan](screenshots/DetailLaporan.png) |
+| *Form pengajuan laporan dampak cuaca* | *Peta lokasi kejadian dengan marker* | *Detail lengkap laporan yang diajukan* |
 
-**Sistem Pelaporan Berbasis Web untuk Monitoring Dampak Cuaca dan Kondisi Wilayah**
+</div>
 
-[![Status](https://img.shields.io/badge/status-in%20development-yellow)]()
-[![License](https://img.shields.io/badge/license-MIT-blue)]()
+### 3. Halaman User
+
+<div align="center">
+
+| Halaman User | Statistik Laporan | Statistik Detail |
+|:------------:|:-----------------:|:----------------:|
+| ![Halaman User](screenshots/HalamanUser.png) | ![Statistik 1](screenshots/halamanStatistik.png) | ![Statistik 2](screenshots/HalamanStatistik2.png) |
+| *Dashboard user dengan riwayat laporan* | *Grafik statistik laporan bulanan* | *Analisis detail per kategori* |
+
+</div>
+
+### 4. Halaman Berita & Edukasi
+
+<div align="center">
+
+| Berita & Edukasi |
+|:----------------:|
+| ![Halaman Berita](screenshots/halamanBerita.png) |
+| *Artikel dan informasi terkini tentang cuaca dan bencana* |
 
 </div>
 
 ---
 
-## 📋 Daftar Isi
+## Admin Panel
 
-- [Tentang Proyek](#-tentang-proyek)
-- [Tujuan Sistem](#-tujuan-sistem)
-- [Fitur Utama](#-fitur-utama)
-  - [Fitur User](#fitur-user)
-  - [Fitur Admin](#fitur-admin)
-- [Preview Aplikasi](#-preview-aplikasi)
-- [Tim Pengembang](#-tim-pengembang)
+### 1. Login & Dashboard Admin
 
----
+<div align="center">
 
-## 🎯 Tentang Proyek
+| Login Admin | Dashboard Admin | Halaman Utama Admin |
+|:-----------:|:---------------:|:-------------------:|
+| ![Login](screenshots/login_Admin.png) | ![Dashboard](screenshots/halamanUtama_admin.png) | ![Admin Panel](screenshots/halamanUtama_admin.png) |
+| *Halaman login khusus administrator* | *Dashboard dengan ringkasan sistem* | *Panel kontrol admin lengkap* |
 
-**SIPACU** (Sistem Pelaporan Dampak Cuaca & Kondisi Wilayah) adalah aplikasi berbasis web yang dirancang untuk memfasilitasi masyarakat dalam melaporkan dampak cuaca dan kondisi wilayah secara terstruktur. Sistem ini juga menyediakan informasi kesiapsiagaan bencana yang dapat diakses oleh seluruh pengguna.
+</div>
 
-Proyek ini dikembangkan sebagai bagian dari praktikum **Pemrograman Jaringan** dengan fokus pada:
-- 🔄 Integrasi sistem pelaporan real-time
-- 📊 Pengelolaan dan analisis data berbasis web
-- 🎨 User interface yang responsif dan mudah digunakan
+### 2. Manajemen & Simulasi
 
-> **Catatan Penting:** Modul statistik menggunakan perhitungan manual berbasis data laporan, **tanpa menggunakan AI**, untuk menghasilkan analisis yang terukur dan relevan dengan kebutuhan praktikum.
+<div align="center">
 
----
+| Simulasi Pesan | Sebaliknya |
+|:--------------:|:----------:|
+| ![Simulasi](screenshots/SimulasiPesan_AdminToUser_danSebaliknya.png) | ![Sebaliknya](screenshots/SimulasiPesan_AdminToUser_danSebaliknya.png) |
+| *Chat antara admin dan user untuk klarifikasi* | *Notifikasi dua arah real-time* |
 
-## 🎯 Tujuan Sistem
-
-| No | Tujuan | Deskripsi |
-|:--:|--------|-----------|
-| 1 | **Kemudahan Pelaporan** | Mempermudah masyarakat melaporkan kejadian terkait dampak cuaca dengan interface yang user-friendly |
-| 2 | **Edukasi & Informasi** | Menyediakan informasi edukasi dan peringatan dini terkait bencana alam dan cuaca ekstrem |
-| 3 | **Validasi Data** | Mendukung proses validasi dan verifikasi laporan oleh admin untuk memastikan akurasi informasi |
-| 4 | **Monitoring Wilayah** | Menyajikan statistik dan rekap pelaporan sebagai bahan monitoring kondisi wilayah secara berkala |
+</div>
 
 ---
 
-## ✨ Fitur Utama
+## Struktur Folder Screenshots
 
-### Fitur User
-
-<table>
-<tr>
-<th width="5%">No</th>
-<th width="25%">Fitur</th>
-<th width="50%">Deskripsi</th>
-<th width="20%">Screenshot</th>
-</tr>
-
-<tr>
-<td align="center">1</td>
-<td><strong>Dashboard Informasi</strong></td>
-<td>
-Menampilkan ringkasan kondisi cuaca, lokasi pemantauan, tingkat risiko wilayah, serta informasi kesiapsiagaan yang relevan
-</td>
-<td align="center">
-<img src="screenshot/HalamanUser.png" alt="Dashboard" width="150"/><br/>
-<em>Akan ditambahkan</em>
-</td>
-</tr>
-
-<tr>
-<td align="center">2</td>
-<td><strong>Edukasi Bencana</strong></td>
-<td>
-Materi edukasi komprehensif terkait:
-<ul>
-<li>Dampak bencana alam</li>
-<li>Langkah pencegahan</li>
-<li>Kesiapsiagaan masyarakat</li>
-</ul>
-</td>
-<td align="center">
-<img src="assets/edukasi.png" alt="Edukasi" width="150"/><br/>
-<em>Akan ditambahkan</em>
-</td>
-</tr>
-
-<tr>
-<td align="center">3</td>
-<td><strong>Ajukan Laporan</strong></td>
-<td>
-Form pelaporan yang mencakup:
-<ul>
-<li>Jenis kejadian</li>
-<li>Lokasi kejadian</li>
-<li>Deskripsi dampak</li>
-<li>Upload dokumentasi (opsional)</li>
-</ul>
-</td>
-<td align="center">
-<img src="assets/form-laporan.png" alt="Form Laporan" width="150"/><br/>
-<em>Akan ditambahkan</em>
-</td>
-</tr>
-
-<tr>
-<td align="center">4</td>
-<td><strong>Statistik Laporan</strong></td>
-<td>
-Rekap laporan personal dengan status:
-<ul>
-<li>⏳ Pending</li>
-<li>✅ Diverifikasi</li>
-<li>❌ Ditolak</li>
-</ul>
-</td>
-<td align="center">
-<img src="assets/statistik-user.png" alt="Statistik User" width="150"/><br/>
-<em>Akan ditambahkan</em>
-</td>
-</tr>
-
-<tr>
-<td align="center">5</td>
-<td><strong>Berita & Informasi</strong></td>
-<td>
-Update terkini mengenai:
-<ul>
-<li>Kondisi cuaca</li>
-<li>Isu lingkungan</li>
-<li>Informasi kebencanaan</li>
-</ul>
-</td>
-<td align="center">
-<img src="assets/berita.png" alt="Berita" width="150"/><br/>
-<em>Akan ditambahkan</em>
-</td>
-</tr>
-
-<tr>
-<td align="center">6</td>
-<td><strong>Chat Admin</strong></td>
-<td>
-Fitur komunikasi untuk:
-<ul>
-<li>Klarifikasi laporan</li>
-<li>Tindak lanjut kejadian</li>
-<li>Konsultasi dan informasi</li>
-</ul>
-</td>
-<td align="center">
-<img src="assets/chat.png" alt="Chat" width="150"/><br/>
-<em>Akan ditambahkan</em>
-</td>
-</tr>
-
-</table>
+```
+screenshots/
+├── dashboard-1.png
+├── dashboard-2.png
+├── dashboard-3.png
+├── login_Admin.png
+├── halamanUtama_admin.png
+├── SimulasiMap.png
+├── DetailLaporan.png
+├── HalamanUser.png
+├── HalamanAjuan.png
+├── halamanStatistik.png
+├── HalamanStatistik2.png
+├── halamanBerita.png
+└── SimulasiPesan_AdminToUser_danSebaliknya.png
+```
 
 ---
 
-### Fitur Admin
+## Keterangan Fitur per Screenshot
 
-<table>
-<tr>
-<th width="5%">No</th>
-<th width="25%">Fitur</th>
-<th width="50%">Deskripsi</th>
-<th width="20%">Screenshot</th>
-</tr>
-
-<tr>
-<td align="center">1</td>
-<td><strong>Manajemen Laporan</strong></td>
-<td>
-Admin dapat melakukan:
-<ul>
-<li>Verifikasi laporan masuk</li>
-<li>Update status tindak lanjut</li>
-<li>Validasi keaslian data dan dokumentasi</li>
-<li>Penolakan laporan dengan alasan</li>
-</ul>
-</td>
-<td align="center">
-<img src="assets/admin-laporan.png" alt="Admin Laporan" width="150"/><br/>
-<em>Akan ditambahkan</em>
-</td>
-</tr>
-
-<tr>
-<td align="center">2</td>
-<td><strong>Manajemen Konten</strong></td>
-<td>
-Pengelolaan konten informasi:
-<ul>
-<li>Publikasi berita terbaru</li>
-<li>Update materi edukasi</li>
-<li>Pengumuman penting</li>
-<li>Peringatan dini</li>
-</ul>
-</td>
-<td align="center">
-<img src="assets/admin-konten.png" alt="Admin Konten" width="150"/><br/>
-<em>Akan ditambahkan</em>
-</td>
-</tr>
-
-<tr>
-<td align="center">3</td>
-<td><strong>Statistik & Analisis</strong></td>
-<td>
-Dashboard analitik dengan filter:
-<ul>
-<li>📍 Berdasarkan lokasi</li>
-<li>🔖 Jenis kejadian</li>
-<li>📅 Rentang waktu</li>
-<li>📊 Grafik dan visualisasi data</li>
-</ul>
-<br/>
-<em>Tanpa AI - agregasi data manual</em>
-</td>
-<td align="center">
-<img src="assets/admin-statistik.png" alt="Admin Statistik" width="150"/><br/>
-<em>Akan ditambahkan</em>
-</td>
-</tr>
-
-</table>
+| Screenshot | Fitur Utama | Status |
+|------------|-------------|:------:|
+| **dashboard-1.png** | Landing page dengan hero section informasi cuaca | ✅ |
+| **dashboard-2.png** | Kategori jenis dampak cuaca (Banjir, Angin, Longsor) | ✅ |
+| **dashboard-3.png** | Filter laporan dan sistem pencarian | ✅ |
+| **login_Admin.png** | Autentikasi admin dengan validasi | ✅ |
+| **halamanUtama_admin.png** | Dashboard admin dengan statistik lengkap | ✅ |
+| **SimulasiMap.png** | Integrasi peta untuk lokasi kejadian | ✅ |
+| **DetailLaporan.png** | View detail laporan dengan modal | ✅ |
+| **HalamanUser.png** | Profile dan riwayat user | ✅ |
+| **HalamanAjuan.png** | Form input laporan baru | ✅ |
+| **halamanStatistik.png** | Grafik statistik dengan Chart.js | ✅ |
+| **HalamanStatistik2.png** | Breakdown detail per kategori | ✅ |
+| **halamanBerita.png** | List berita dan artikel edukasi | ✅ |
+| **SimulasiPesan_AdminToUser_danSebaliknya.png** | Sistem chat real-time | ✅ |
 
 ---
 
-## 📸 Preview Aplikasi
+## Teknologi yang Digunakan
 
-### User Interface
+**Frontend:**
+- HTML5, CSS3, JavaScript
+- Bootstrap 5 untuk responsive design
+- Chart.js untuk visualisasi data
+- Leaflet.js untuk peta interaktif
 
-| Halaman | Preview |
-|---------|---------|
-| **Landing Page** | ![Landing](assets/landing.png)<br/>*Akan ditambahkan* |
-| **Dashboard User** | ![Dashboard](assets/dashboard-user.png)<br/>*Akan ditambahkan* |
-| **Form Pelaporan** | ![Form](assets/form-laporan.png)<br/>*Akan ditambahkan* |
+**Backend:**
+- PHP 8.x
+- MySQL Database
+- REST API
 
-### Admin Panel
-
-| Halaman | Preview |
-|---------|---------|
-| **Dashboard Admin** | ![Admin Dashboard](assets/admin-dashboard.png)<br/>*Akan ditambahkan* |
-| **Verifikasi Laporan** | ![Verifikasi](assets/admin-verifikasi.png)<br/>*Akan ditambahkan* |
-| **Analisis Data** | ![Analisis](assets/admin-analisis.png)<br/>*Akan ditambahkan* |
-
-### Checklist Progres
-
-- [x] ✅ Modul User - Dashboard & Edukasi
-- [x] ✅ Modul User - Pengajuan Laporan
-- [x] ✅ Modul User - Statistik Personal
-- [x] ✅ Panel Admin Dasar
-- [ ] ⏳ Dokumentasi Screenshot
-- [ ] ⏳ Finalisasi Statistik Presentasi
-- [ ] ⏳ Testing & Bug Fixing
-- [ ] ⏳ Deployment Production
-
----
-
-## 👥 Tim Pengembang
-
-<table>
-<tr>
-<td align="center">
-<img src="assets/avatar-1.png" width="100px;" alt="Developer 1"/><br />
-<sub><b>Ramzy Junfaris</b></sub><br />
-<sub>Full Stack Developer</sub>
-</td>
-<td align="center">
-<img src="assets/avatar-2.png" width="100px;" alt="Desainger"/><br />
-<sub><b>Tatia</b></sub><br />
-<sub>Frontend Developer</sub>
-</td>
-</table>
-
----
-
-## 📝 Lisensi
-
-Proyek ini dikembangkan untuk keperluan akademik - Praktikum Pemrograman Jaringan.
+**Tools:**
+- Git untuk version control
+- VS Code sebagai code editor
 
 ---
 
 <div align="center">
 
-**SIPACU** - Sistem Pelaporan Dampak Cuaca & Kondisi Wilayah
+**SIPACU Screenshot Gallery**
 
-Made with Tatia and ramzy Junfaris 
+*Dokumentasi visual lengkap sistem pelaporan dampak cuaca*
 
-[⬆ Kembali ke atas](#sipacu---sistem-pelaporan-dampak-cuaca--kondisi-wilayah)
+[⬆ Kembali ke README utama](../README.md)
 
 </div>
